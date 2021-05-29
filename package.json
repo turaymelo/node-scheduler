@@ -1,0 +1,16 @@
+
+{
+  "name": "node-scheduler",
+  "version": "1.0.0",
+  "main": "punchjob.js",
+  "license": "MIT",
+  "type": "module",  
+  "scripts": {
+    "start": "node punchschedulejob.js",
+    "dev": "nodemon punchschedulejob.js"
+  },
+  "dependencies": {
+    "node-schedule": "^2.0.0",
+    "toad-scheduler": "^1.3.0"
+  }
+}
