@@ -1,15 +1,16 @@
-
 {
   "name": "node-scheduler",
   "version": "1.0.0",
   "main": "punchjob.js",
   "license": "MIT",
-  "type": "module",  
+  "type": "module",
   "scripts": {
     "start": "node punchschedulejob.js",
     "dev": "nodemon punchschedulejob.js"
   },
   "dependencies": {
+    "log4js": "^6.3.0",
+    "mariadb": "^2.5.3",
     "node-schedule": "^2.0.0",
     "toad-scheduler": "^1.3.0"
   }
