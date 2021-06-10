@@ -9,6 +9,7 @@
     "dev": "nodemon punchschedulejob.js"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "log4js": "^6.3.0",
     "mariadb": "^2.5.3",
     "node-schedule": "^2.0.0",
