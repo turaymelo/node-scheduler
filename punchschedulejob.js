@@ -4,6 +4,8 @@ import mariadb from './database/mariadb.js'
 
 console.log('Estamos a trabalhar')
 
+const delay = (amount=758) => new Promise((resolve, reject) => setTimeout(resolve,amount))
+
 async function jobCopyUsers() {
   let conn;
   try {
@@ -48,13 +50,33 @@ async function jobCopyPunchLog() {
 //     console.log('Corri o job')
 // })
 
+await delay()
+schedule.scheduleJob('*/10 * * * * *', async ()=>{
+  console.log('Inicio do job - UserGroups')
+
+  await jobCopyUserGroups()
+
+  console.log('Fim do UserGroups')
+})
+await delay()
 //correr o job de 3 em 3 segundos
 schedule.scheduleJob('*/10 * * * * *', async ()=>{
-    console.log('Inicio do job')
+  console.log('Inicio do job - Users')
 
-    await jobCopyUserGroups()
-    await jobCopyUsers()
-    await jobCopyPunchLog()
+  await jobCopyUserGroups()
+  await jobCopyUsers()
+  await jobCopyPunchLog()
 
-    console.log('Fim do job')
+  console.log('Fim do job - Users')
+})
+
+await delay()
+schedule.scheduleJob('*/10 * * * * *', async ()=>{
+  console.log('Inicio do - PunchLog')
+
+  await jobCopyUserGroups()
+  await jobCopyUsers()
+  await jobCopyPunchLog()
+
+  console.log('Fim do job - PunchLog')
 })
